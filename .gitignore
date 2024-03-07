@@ -1,3 +1,11 @@
 *.json
 *.log
 *.exe
+
+# Ignore Terraform state files
+terraform/.terraform
+terraform/terraform.tfstate*
+# Ignore Python virtual environment
+spark/venv/
+# Ignore Docker images
+docker/my_image/
