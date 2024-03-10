@@ -11,6 +11,7 @@ provider "google" {
   # Configuration options
   project = "spark-project-416321"
   region  = "us-west1"
+  credentials = file("keys/my-creds.json")
 }
 
 resource "google_compute_instance" "vm_instance" {
@@ -50,6 +51,19 @@ resource "google_compute_instance" "vm_instance" {
     # Install Docker Engine
     sudo apt-get update
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+    # Install Python, pip, JRE, Spark, venv
+    apt-get install -y openjdk-11-jre-headless default-jre
+    sudo apt-get install -y python3 python3-pip
+    sudo apt-get install -y spark
+    apt-get install -y git
+    sudo apt install python3.11-venv
+
+    #Set up virtual environment and pip packages
+    python3 -m venv myenv
+    source myenv/bin/activate
+    pip3 install pandas jupyter pyspark
+
   EOT
 
   tags = ["docker-vm"]

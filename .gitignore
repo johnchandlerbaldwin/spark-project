@@ -9,3 +9,4 @@ terraform/terraform.tfstate*
 spark/venv/
 # Ignore Docker images
 docker/my_image/
+useful_commands.txt
