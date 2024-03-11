@@ -5,8 +5,10 @@
 keys/*
 !keys/*/
 
+.DS_Store
+
 # Ignore Terraform state files
-terraform/.terraform
+terraform/.terraform*
 terraform/terraform.tfstate*
 # Ignore Python virtual environment
 spark/venv/
