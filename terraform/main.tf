@@ -9,15 +9,15 @@ terraform {
 
 provider "google" {
   # Configuration options
-  project = "spark-project-416321"
-  region  = "us-west1"
-  credentials = file("keys/my-creds.json")
+  project = var.project
+  region  = var.region
+  credentials = file(var.credentials)
 }
 
 resource "google_compute_instance" "vm_instance" {
   name         = "instance-1"
   machine_type = "e2-medium"
-  zone         = "us-west1-b"
+  zone         = var.region
 
   boot_disk {
     initialize_params {
